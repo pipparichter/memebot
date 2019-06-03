@@ -1,1 +1,1 @@
-bot:python3 HoeBot.py 
+worker:python3 HoeBot.py
