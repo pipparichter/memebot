@@ -1,2 +1,1 @@
-web: python3 ./HoeBot.py
-
+bot:python3 HoeBot.py 
