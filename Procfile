@@ -1,1 +1,1 @@
-web:python3 HoeBot.py 
+web: gunicorn bot:app --workers=1
