@@ -1,1 +1,1 @@
-web: gunicorn HoeBot:app 
+web: gunicorn HoeBot:app --workers 1 
