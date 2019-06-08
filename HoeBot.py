@@ -1,9 +1,8 @@
-import requests
+import request
 import time
 
 import global_vars
 import triggers 
-    
 
 token = global_vars.token
 groupID = global_vars.groupID
