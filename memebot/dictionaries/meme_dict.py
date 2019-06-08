@@ -1,4 +1,4 @@
-memeLib = {
+memeDict = {
 'nerdy':
     ['https://i.groupme.com/249x202.jpeg.cff2df89242542709f02be9d5d360e32.large', 'https://i.groupme.com/720x479.png.42654903544e4341a9fe24aa344f84e0.large',
     'https://i.groupme.com/1412x2325.jpeg.9981d0f6d9e54758b528bc67c9156c34.large', 'https://i.groupme.com/500x500.jpeg.fc006e29bdbc432ab601ff1bdf6e4595.large',

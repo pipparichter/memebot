@@ -1,4 +1,8 @@
-import request
+import sys
+sys.path.append('./features')
+sys.path.append('./dictionaries')
+
+import requests
 import time
 
 import global_vars
@@ -32,7 +36,7 @@ def botReply(message):
     return      
     
     
-###########################################################################################################################################################
+##########################################################################################################################################
 
 requestParams = {'token': token, 'limit':1}
 

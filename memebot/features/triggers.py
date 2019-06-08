@@ -1,5 +1,5 @@
 # import yeeter_meter as yeet
-import meme_lib as memes
+import meme_dict as memes
 # import joke_lib as jokes
 import global_vars
 
@@ -25,7 +25,7 @@ def sendMessage(toSend):
     
     if type(re.compile(picStructure).match(toSend)) != type(None):
         attachment = toSend
-        text = 'here\'s a DaNk MeMe'
+        text = 'here ya go'
     else:
         text = toSend
             
@@ -58,7 +58,7 @@ def readReply():
     return 0
               
 
-################################################################################################################################################################
+##########################################################################################################################################
 
 # This function contains the procedure needed for the user to specify a category of meme, to be sent into the designated group chat. 
 def memeGenerator():
@@ -73,7 +73,7 @@ def memeGenerator():
         return 'oops, your meme request timed out. get it together and try again.'
     else:
         if reply in categories:
-            memeList = memes.memeLib[reply]
+            memeList = memes.memeDict[reply]
             return random.choice(memeList)
         else:
             return 'oops, you didn\'t respond with a valid category of meme. get it together and try again.'
