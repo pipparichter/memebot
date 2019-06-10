@@ -67,7 +67,7 @@ def readReply():
 # This function contains the procedure needed for the user to specify a category of meme, to be sent into the designated group chat. 
 def memeGenerator():
     
-    categories = [key for key in memes.memeLib.keys()]
+    categories = [key for key in memes.memeDict.keys()]
     
     sendMessage('heck ya, what category of meme? (nerdy, wholesome, inside jokes)')
     
