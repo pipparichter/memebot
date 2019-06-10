@@ -1,1 +1,1 @@
-web: gunicorn ./memebot/memebot:app --workers 1 
+web: gunicorn memebot:app --workers 1 
