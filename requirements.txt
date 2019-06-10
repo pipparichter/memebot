@@ -1,0 +1,12 @@
+certifi==2019.3.9
+chardet==3.0.4
+corner==2.0.1
+Cython==0.29.10
+emcee==2.2.1
+idna==2.8
+nestle==0.2.0
+pydot==1.4.1
+requests==2.22.0
+urllib3==1.25.3
+gunicorn==19.9.0
+cython==0.29.10
