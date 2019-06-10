@@ -13,7 +13,7 @@ setuptools.setup(
         author_email = 'philippa.a.richter@gmail.com',
 
         packages = {'memebot':['.*py'], 'memebot.features':['.*py', '.*pyx'], 'memebot.dictionaries':['.*py']},
-        ext_modules = [cythonize('.memebot/features/word_counter.py'), cythonize('./memebot/features/triggers.py')],
+        ext_modules = [cythonize('./features/word_counter.py'), cythonize('./features/triggers.py')],
         install_requires = ['cython', 'certifi', 'chardet', 'idna', 'requests', 'urllib3', 'gunicorn'],
         
         zip_safe = False
