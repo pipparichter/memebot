@@ -1,6 +1,0 @@
-certifi
-chardet
-gunicorn
-idna
-requests
-urllib3
