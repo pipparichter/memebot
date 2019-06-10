@@ -1,17 +1,20 @@
 import setuptools
-from Cython.build import cythonize
+from setuptools.extension import Extension
+from Cython.Build import cythonize
 
-with README.txt as r:
-    long_description = r.read()    
+with open('README.md', 'r') as R:
+    long_description = R.read()    
 
 setuptools.setup(
-        zip_safe = False,
-        name = 'HoeBot', 
+        name = 'memebot', 
         description = 'GroupMe bot',
-        long_description = long_description
+        long_description = long_description,
         author = 'Philippa Richter',
         author_email = 'philippa.a.richter@gmail.com',
-        py_modules = ['Hoebot.py', 'gloal_vars.py', 'meme_lib.py' ]
-        ext_modules = [cythonize('yeeter_meter.pyx'), cythonize('triggers.pyx')],
-        install_requires = ['certifi', 'chardet', 'idna', 'requests', 'urllib3', 'gunicorn']
+
+        packages = {'memebot':['.*py'], 'memebot.features':['.*py', '.*pyx'], 'memebot.dictionaries':['.*py']},
+        ext_modules = [cythonize('.memebot/features/word_counter.py'), cythonize('./memebot/features/triggers.py')],
+        install_requires = ['certifi', 'chardet', 'idna', 'requests', 'urllib3', 'gunicorn'],
+        
+        zip_safe = False
         )

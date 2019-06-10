@@ -1,7 +1,3 @@
-import sys
-sys.path.append('../dictionaries')
-sys.path.append('../')
-
 # import yeeter_meter as yeet
 import meme_dict as memes
 # import joke_lib as jokes

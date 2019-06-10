@@ -1,0 +1,13 @@
+README.md
+setup.py
+MemeBot.egg-info/PKG-INFO
+MemeBot.egg-info/SOURCES.txt
+MemeBot.egg-info/dependency_links.txt
+MemeBot.egg-info/requires.txt
+MemeBot.egg-info/top_level.txt
+memebot/__init__.py
+memebot/global_vars.py
+memebot/memebot.py
+memebot/dictionaries/__init__.py
+memebot/dictionaries/meme_dict.py
+memebot/features/__init__.py
