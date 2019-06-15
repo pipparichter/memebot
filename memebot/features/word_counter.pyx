@@ -1,14 +1,17 @@
+import sys
+sys.path.append('../dictionaries')
+sys.path.append('../')
+
+import global_vars
+
 import requests
-# import plotly
-# import plotly.graph_objs as go
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt 
 import re
 
-# plotly.tools.set_credentials_file(username='pipparichter', api_key='TOCNwwABpWtccg50URRK')
 
-token = 'J4pPmVtQuGb3wDCKQFXSFkATcdwXMUNPjFV6LIdM'
-# groupID = '50201122' # This is the group ID for Caltech Commies '23
-groupID = '46542202' # This is the group ID for Caltech Class of 2023
+
+token = global_vars.token 
+groupID = global_vars.groupID
 
 
 # Counts the number of times a word has been mentioned in the 1000 messages. 
