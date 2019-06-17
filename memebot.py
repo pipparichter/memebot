@@ -16,7 +16,7 @@ botID = global_vars.botID
 
 requestParams = {'token': token, 'limit':1}
 
-def app():
+def app()
     while True:
         rqResponse = requests.get('https://api.groupme.com/v3/groups/' + groupID +'/messages', params = requestParams)
     
@@ -39,3 +39,5 @@ def app():
     
     
         time.sleep(5)
+
+app = app()
