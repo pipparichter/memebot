@@ -16,13 +16,11 @@ botID = global_vars.botID
 
 requestParams = {'token': token, 'limit':1}
 
-# This function sends a get request to the Heroku App hosting MemeBot in order to prevent the application from sleeping.
-def keepAwake():
-    requests.get('http://gm-memebot.herokuapp.com')
-
 while True:
     rqResponse = requests.get('https://api.groupme.com/v3/groups/' + groupID +'/messages', params = requestParams)
-    keepAwake()
+    
+    # Pings the gm-membot Heroku app so it doesn't idle.
+    requests.get('http://gm-memebot.herokuapp.com') 
     
     if rqResponse.status_code == 200:
         gotten = rqResponse.json()['response']['messages']
