@@ -21,9 +21,9 @@ def app():
         requestResponse = requests.get('https://api.groupme.com/v3/groups/' + groupID +'/messages', params = requestParams)
     
         # Pings the gm-membot Heroku app so it doesn't idle.
-        # herokuResponse = requests.get('http://gm-memebot.herokuapp.com') 
-        # if herokuResponse.status_code == 200:
-            # print('Heroku is working')
+        herokuResponse = requests.get('http://gm-memebot.herokuapp.com') 
+        if herokuResponse.status_code == 200:
+            print('Heroku is working')
         if requestResponse.status_code == 200:
             gotten = requestResponse.json()['response']['messages']
             for message in gotten:
