@@ -34,9 +34,9 @@ def app():
                     requestParams['since_id'] = message['id']
         
         else:
-            raise Exception('Something went wrong.')
+            error = requestResponse.status_code
+            raise Exception('Something went wrong. GroupMe API gave error %s' % error)
             break
-    
     
         time.sleep(5)
 
