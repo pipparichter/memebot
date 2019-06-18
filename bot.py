@@ -18,14 +18,14 @@ requestParams = {'token': token, 'limit':1}
 
 def app():
     while True:
-        rqResponse = requests.get('https://api.groupme.com/v3/groups/' + groupID +'/messages', params = requestParams)
+        requestResponse = requests.get('https://api.groupme.com/v3/groups/' + groupID +'/messages', params = requestParams)
     
         # Pings the gm-membot Heroku app so it doesn't idle.
-        requests.get('http://gm-memebot.herokuapp.com') 
-    
-        if rqResponse.status_code == 200:
-            gotten = rqResponse.json()['response']['messages']
-        
+        # herokuResponse = requests.get('http://gm-memebot.herokuapp.com') 
+        # if herokuResponse.status_code == 200:
+            # print('Heroku is working')
+        if requestResponse.status_code == 200:
+            gotten = requestResponse.json()['response']['messages']
             for message in gotten:
                 messageText = message['text'].lower()
                       
@@ -34,7 +34,7 @@ def app():
                     requestParams['since_id'] = message['id']
         
         else:
-            raise Exception('GroupMe\'s API fucked up.')
+            raise Exception('Something went wrong.')
             break
     
     
