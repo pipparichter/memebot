@@ -48,7 +48,7 @@ def app(environ, startResponse):
 port = int(os.environ.get('PORT'))
 # print(port)
 
-server = make_server('gm-memebot.herokuapp.com', port, app)
+server = make_server('', 80, app)
 # server = make_server('gm-memebot.herokuapp.com', 810, app)
 
 # print(os.environ['PORT'])
