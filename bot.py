@@ -29,7 +29,7 @@ def app(environ, startResponse):
         requestBodySize = 0
         
     requestBody = environ['wsgi.input'].read(requestBodySize)
-    bot_reply.sendMessage('hello')
+    # bot_reply.sendMessage('hello')
      
 
     # bodyDict = cgi.parse_qs(requestBody)
