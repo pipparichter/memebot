@@ -29,7 +29,7 @@ def app(environ, startResponse):
         requestBodySize = 0
         
     requestBody = environ['wsgi.input'].read(requestBodySize)
-    # bot_reply.sendMessage('hello')
+    bot_reply.sendMessage('hello')
      
 
     # bodyDict = cgi.parse_qs(requestBody)
@@ -45,10 +45,10 @@ def app(environ, startResponse):
     return [responseBody]
 
 
-port = int(os.environ.get('PORT'))
+# port = int(os.environ.get('PORT'))
 # print(port)
 
-server = make_server('https://gm-memebot.herokuapp.com', port, app)
+# server = make_server('https://gm-memebot.herokuapp.com', port, app)
 # server = make_server('gm-memebot.herokuapp.com', 810, app)
 
 # print(os.environ['PORT'])
