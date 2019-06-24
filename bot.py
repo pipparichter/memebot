@@ -3,6 +3,7 @@ import cgi
 
 import requests
 import time
+import os
 import sys
 
 sys.path.append('./memebot/features')
@@ -28,7 +29,8 @@ def app(environ, startResponse):
         requestBodySize = 0
         
     requestBody = environ['wsgi.input'].read(requestBodySize)
-    print('something') 
+    bot_reply.sendMessage('hello')
+     
 
     # bodyDict = cgi.parse_qs(requestBody)
     # print(bodyDict)
@@ -43,11 +45,11 @@ def app(environ, startResponse):
     return [responseBody]
 
 
-# port = os.environ['PORT']
+port = os.environ.get('PORT')
 # print(port)
 
-# server = make_server('gm-memebot.herokuapp.com', port, website)
-server = make_server('localhost', 810, app)
+server = make_server('gm-memebot.herokuapp.com', port, app)
+# server = make_server('gm-memebot.herokuapp.com', 810, app)
 
 # print(os.environ['PORT'])
 
