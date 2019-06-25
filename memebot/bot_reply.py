@@ -23,14 +23,14 @@ token = global_vars.token
 
 
 staticTriggers = {
-        'hello, hoebot':'hey bitches',
-        'thanks, hoebot':'don\'t mention it',
-        'hoebot, do you have anything to say to adam?':'yes. leave'
+        'hello, memebot':'hey bitches',
+        'thanks, memebot':'don\'t mention it',
+        'memebot, do you have anything to say to adam?':'yes. leave'
         }
 
 dynamicTriggers = [
         'meme me',
-        'hoebot, tell me a joke'
+        'memebot, tell me a joke'
         ]
 
 
@@ -100,7 +100,7 @@ def botReply(message):
         # reply = triggers.jokeGenerator()
 
     # elif messageText == 'word frequency me':
-       #  reply = word_counter.____()
+        # reply = word_counter.____()
 
     else:
         reply = staticTriggers[messageText]

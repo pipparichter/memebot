@@ -28,13 +28,13 @@ def app(environ, startResponse):
     except ValueError:
         requestBodySize = 0
         
-    requestBody = environ['wsgi.input'].read(requestBodySize).decode('utf-8')
-    bot_reply.sendMessage(str(requestBody))     
+    message = environ['wsgi.input'].read(requestBodySize).decode('utf-8')
+    messageText = message['text']
+    
+    if (messageText in bot_reply.staticTriggers) or (messageText in bot_reply.dynamicTriggers):
+        bot_reply.botReply(message)
 
-    bodyDict = cgi.parse_qs(requestBody)
-    # print(bodyDict)
-
-    responseBody = bytes('successful', 'utf-8') 
+    responseBody = bytes(messageText, 'utf-8') 
        
     status = '200 OK'
     responseHeaders = [('Content-Type', 'text/plain'), ('Content-Length', str(len(responseBody)))]
