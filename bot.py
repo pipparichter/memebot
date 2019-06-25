@@ -28,7 +28,7 @@ def app(environ, startResponse):
     except ValueError:
         requestBodySize = 0
         
-    requestBody = environ['wsgi.input'].read(requestBodySize)
+    requestBody = environ['wsgi.input'].read(requestBodySize).decode('utf-8')
     bot_reply.sendMessage(str(requestBody))     
 
     bodyDict = cgi.parse_qs(requestBody)
