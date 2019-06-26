@@ -5,8 +5,8 @@
 
 # Include subpackages in the sys.path so contained modules may be imported. 
 import sys
-sys.path.append('./dictionaries')
-sys.path.append('./features')
+sys.path.append('./dictionaries/')
+sys.path.append('./features/')
 
 import global_vars
 import meme_generator
