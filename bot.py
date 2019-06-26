@@ -27,7 +27,7 @@ def app(environ, startResponse):
     except ValueError:
         requestBodySize = 0
         
-    message = environ['wsgi.input'].read(requestBodySize).decode('utf-8')
+    message = environ['wsgi.input'].read(requestBodySize).decode('utf-8').json()
     messageText = message['text']
     
     if (messageText in bot_reply.staticTriggers) or (messageText in bot_reply.dynamicTriggers):
