@@ -6,14 +6,12 @@ configparser==3.7.4
 Cython==0.29.10
 entrypoints==0.3
 enum34==1.1.6
-futures==3.2.0
 idna==2.8
 ipaddress==1.0.17
 isort==4.3.20
 keyring==10.6.0
 keyrings.alt==3.0
 mccabe==0.6.1
-pycodestyle==2.5.0
 pygobject==3.26.1
 requests==2.22.0
 SecretStorage==2.3.1
