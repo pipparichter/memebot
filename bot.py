@@ -5,6 +5,7 @@ import requests
 import time
 import os
 import sys
+import json
 
 sys.path.append('./memebot/features')
 sys.path.append('./memebot/dictionaries')
@@ -27,7 +28,7 @@ def app(environ, startResponse):
     except ValueError:
         requestBodySize = 0
         
-    message = environ['wsgi.input'].read(requestBodySize).decode('utf-8').json()
+    message = json.loads(environ['wsgi.input'].read(requestBodySize).decode('utf-8'))
     messageText = message['text']
     
     if (messageText in bot_reply.staticTriggers) or (messageText in bot_reply.dynamicTriggers):
