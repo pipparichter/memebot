@@ -30,6 +30,7 @@ def app(environ, startResponse):
         
     # message = json.loads(environ['wsgi.input'].read(requestBodySize).decode('utf-8'))
     responseBody = str(environ['wsgi.input'].read(requestBodySize).decode('utf-8'))
+    print(responseBody)
     # messageText = message['text']
     
     # if (messageText in bot_reply.staticTriggers) or (messageText in bot_reply.dynamicTriggers):
