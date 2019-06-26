@@ -29,13 +29,13 @@ def app(environ, startResponse):
         requestBodySize = 0
         
     # message = json.loads(environ['wsgi.input'].read(requestBodySize).decode('utf-8'))
-    print(environ['wsgi.input'].read(requestBodySize).decode('utf-8'))
-    messageText = message['text']
+    responseBody = str(environ['wsgi.input'].read(requestBodySize).decode('utf-8'))
+    # messageText = message['text']
     
-    if (messageText in bot_reply.staticTriggers) or (messageText in bot_reply.dynamicTriggers):
-        bot_reply.botReply(message)
+    # if (messageText in bot_reply.staticTriggers) or (messageText in bot_reply.dynamicTriggers):
+        # bot_reply.botReply(message)
 
-    responseBody = bytes(messageText, 'utf-8') 
+    # responseBody = bytes(messageText, 'utf-8') 
        
     status = '200 OK'
     responseHeaders = [('Content-Type', 'text/plain'), ('Content-Length', str(len(responseBody)))]
