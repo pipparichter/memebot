@@ -33,7 +33,7 @@ def app(environ, startResponse):
         responseBody = bytes('MemeBot is up and running', 'utf-8') 
 
     status = '200 OK'
-    responseHeaders = [('Content-Type', 'text/plain'), ('Content-Length', str(len(messageText)))]
+    responseHeaders = [('Content-Type', 'text/plain'), ('Content-Length', str(len(responseBody)))]
 
     startResponse(status, responseHeaders)
 
