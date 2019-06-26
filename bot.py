@@ -28,22 +28,18 @@ def app(environ, startResponse):
     except ValueError:
         requestBodySize = 0
         
-    # message = json.loads(environ['wsgi.input'].read(requestBodySize).decode('utf-8'))
-    responseBody = str(environ['wsgi.input'].read(requestBodySize).decode('utf-8'))
-    print(responseBody)
-    # messageText = message['text']
+    message = json.loads(environ['wsgi.input'].read(requestBodySize).decode('utf-8'))
+    messageText = message['text']
     
-    # if (messageText in bot_reply.staticTriggers) or (messageText in bot_reply.dynamicTriggers):
-        # bot_reply.botReply(message)
+    if (messageText in bot_reply.staticTriggers) or (messageText in bot_reply.dynamicTriggers):
+        bot_reply.botReply(message)
 
-    # responseBody = bytes(messageText, 'utf-8') 
-       
     status = '200 OK'
     responseHeaders = [('Content-Type', 'text/plain'), ('Content-Length', str(len(responseBody)))]
 
     startResponse(status, responseHeaders)
 
-    return [responseBody]
+    return [bytes(messageText, 'utf-8')]
 
 
 # port = int(os.environ.get('PORT'))
