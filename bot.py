@@ -35,7 +35,7 @@ def app(environ, startResponse):
         bot_reply.botReply(message)
 
     status = '200 OK'
-    responseHeaders = [('Content-Type', 'text/plain'), ('Content-Length', str(len(responseBody)))]
+    responseHeaders = [('Content-Type', 'text/plain'), ('Content-Length', str(len(messageText))]
 
     startResponse(status, responseHeaders)
 
