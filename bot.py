@@ -15,31 +15,29 @@ import global_vars
 import bot_reply
 
 
-token = global_vars.token
-groupID = global_vars.groupID
-botID = global_vars.botID
-
-requestParams = {'token':token, 'limit':1}
-
-
 def app(environ, startResponse):
     try:
         requestBodySize = int(environ.get('CONTENT_LENGTH', 0))
     except ValueError:
         requestBodySize = 0
-        
-    message = json.loads(environ['wsgi.input'].read(requestBodySize).decode('utf-8'))
-    messageText = message['text']
     
-    if (messageText in bot_reply.staticTriggers) or (messageText in bot_reply.dynamicTriggers):
-        bot_reply.botReply(message)
+    try:
+        message = json.loads(environ['wsgi.input'].read(requestBodySize).decode('utf-8'))
+        messageText = message['text']
+        responseBody = bytes(messageText, 'utf-8')
+    
+        if (messageText in bot_reply.staticTriggers) or (messageText in bot_reply.dynamicTriggers):
+            bot_reply.botReply(message)
+            
+    except json.decoder.JSONDecodeError:
+        responseBody = bytes('MemeBot is up and running', 'utf-8') 
 
     status = '200 OK'
     responseHeaders = [('Content-Type', 'text/plain'), ('Content-Length', str(len(messageText)))]
 
     startResponse(status, responseHeaders)
 
-    return [bytes(messageText, 'utf-8')]
+    return [responseBody]
 
 
 # port = int(os.environ.get('PORT'))
