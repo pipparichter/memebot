@@ -1,6 +1,6 @@
 import setuptools
-from setuptools.extension import Extension
-from Cython.Build import cythonize
+# from setuptools.extension import Extension
+# from Cython.Build import cythonize
 
 with open('README.md', 'r') as R:
     long_description = R.read()    
@@ -19,10 +19,10 @@ setuptools.setup(
             'memebot.features':['.*py', '.*pyx'], 
             'memebot.dictionaries':['.*py']},
         
-        ext_modules = [
-            cythonize('./memebot/features/word_counter.pyx'),
-            cythonize('./memebot/bot_reply.pyx'),
-            cythonize('./memebot/features/meme_generator.pyx')],
+        # ext_modules = [
+            # cythonize('./memebot/features/word_counter.pyx'),
+            # cythonize('./memebot/bot_reply.pyx'),
+            # cythonize('./memebot/features/meme_generator.pyx')],
         
         install_requires = open('requirements.txt', 'r').read().split('\n'),
 
