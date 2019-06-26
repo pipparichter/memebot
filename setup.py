@@ -6,6 +6,7 @@ with open('README.md', 'r') as R:
     long_description = R.read()    
 
 setuptools.setup(
+        zip_safe = False,
        
         name = 'memebot', 
         description = 'GroupMe bot',
@@ -19,11 +20,10 @@ setuptools.setup(
             'memebot.dictionaries':['.*py']},
         
         ext_modules = [
-            cythonize('./features/word_counter.pyx'),
-            cythonize('./bot_reply.pyx'),
-            cythonize('./features/meme_generator.pyx')],
+            cythonize('./memebot/features/word_counter.pyx'),
+            cythonize('./memebot/bot_reply.pyx'),
+            cythonize('./memebot/features/meme_generator.pyx')],
         
-        install_requires = ['cython', 'certifi', 'chardet', 'idna', 'requests', 'urllib3', 'gunicorn'],
-        
-        zip_safe = False
+        install_requires = open('requirements.txt', 'r').read().split('\n'),
+
         )
