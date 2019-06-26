@@ -12,9 +12,5 @@ isort==4.3.20
 keyring==10.6.0
 keyrings.alt==3.0
 mccabe==0.6.1
-pygobject==3.26.1
 requests==2.22.0
-SecretStorage==2.3.1
-six==1.11.0
-typing==3.7.4
 urllib3==1.25.3 
