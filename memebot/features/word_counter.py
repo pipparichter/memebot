@@ -87,11 +87,11 @@ def wordFrequency():
         wordsToMatch = words.split(',')
 
     else:
-        reply = 'seriously, i said comma separated.'
+        return 'seriously, i said comma separated.'
 
     data = countWords(wordsToMatch)
     plotData(data, wordsToMatch)
     
-    reply = picToURL('..dictionaries/word_counter_graphs/graph.png')
+    url = picToURL('..dictionaries/word_counter_graphs/graph.png')
 
-    return reply 
+    return url 
