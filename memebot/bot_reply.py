@@ -10,6 +10,7 @@ sys.path.append('./features/')
 
 import global_vars
 import meme_generator
+import word_counter
 
 import requests
 import re
@@ -30,7 +31,8 @@ staticTriggers = {
 
 dynamicTriggers = [
         'meme me',
-        'memebot, tell me a joke'
+        'memebot, tell me a joke',
+        'word frequency me'
         ]
 
 
@@ -99,8 +101,8 @@ def botReply(message):
     # if messageText == 'joke me':
         # reply = triggers.jokeGenerator()
 
-    # elif messageText == 'word frequency me':
-        # reply = word_counter.____()
+    elif messageText == 'word frequency me':
+        reply = word_counter.wordFrequency()
 
     else:
         reply = staticTriggers[messageText]
