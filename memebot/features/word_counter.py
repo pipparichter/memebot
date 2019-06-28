@@ -8,6 +8,7 @@ import bot_reply
 import os
 import requests
 import matplotlib.pyplot as plt 
+import re
 
 import boto3 
 s3 = boto3.client('s3')
