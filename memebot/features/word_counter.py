@@ -71,9 +71,9 @@ def plotData(data, wordsToMatch):
     plt.ylabel('cumulative word instances')
     plt.title('instances of the words ' + str(wordsToMatch))
     
-    os.makedir('./tmp')
+    # os.makedir('./tmp')
 
-    plt.savefig('./tmp/graph.png')
+    plt.savefig('../dictionaries/word_counter_graphs/graph.png')
     
     return
 
@@ -96,7 +96,7 @@ def wordFrequency():
     data = countWords(wordsToMatch)
     plotData(data, wordsToMatch)
     
-    url = picToURL('./tmp/graph.png')
+    url = picToURL('../dictionaries/word_counter_graphs/graph.png')
     if len(url) == 0:
         return 'no url'
     return url 
