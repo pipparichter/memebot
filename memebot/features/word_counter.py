@@ -1,11 +1,11 @@
 import sys
 sys.path.append('../dictionaries')
-sys.path.append('../dictionaries/word_counter_graphs')
 sys.path.append('../')
 
 import global_vars
 import bot_reply
 
+import os
 import requests
 import matplotlib.pyplot as plt 
 import re
@@ -22,7 +22,7 @@ def picToURL(pathString):
     with open(pathString, 'rb') as image:
         binaryImage = image.read()
 
-    response = requests.post('https://image.groupme.com/pictures', data     = binaryImage, headers = headers, params = {'access_token':token})
+    response = requests.post('https://image.groupme.com/pictures', data = binaryImage, headers = headers, params = {'access_token':token})
     
     return response.json()['payload']['picture_url'] + '.large'
 
@@ -71,7 +71,9 @@ def plotData(data, wordsToMatch):
     plt.ylabel('cumulative word instances')
     plt.title('instances of the words ' + str(wordsToMatch))
     
-    plt.savefig('../dictionaries/word_counter_graphs/graph.png')
+    os.makedir('./tmp')
+
+    plt.savefig('./tmp/graph.png')
     
     return
 
@@ -94,7 +96,7 @@ def wordFrequency():
     data = countWords(wordsToMatch)
     plotData(data, wordsToMatch)
     
-    url = picToURL('..dictionaries/word_counter_graphs/graph.png')
+    url = picToURL('./tmp/graph.png')
     if len(url) == 0:
         return 'no url'
     return url 
