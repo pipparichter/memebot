@@ -77,7 +77,7 @@ def plotData(data, wordsToMatch):
     
     try:
         os.mkdir('../../tmp')
-    except: FileExistsError
+    except os.FileExistsError:
         pass 
     
     if os.path.exists('../../tmp'):
