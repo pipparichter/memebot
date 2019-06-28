@@ -91,6 +91,9 @@ def wordFrequency():
     else:
         return 'seriously, i said comma separated.'
 
+    with open('../dictionaries/word_counter_graphs/test.txt', 'w') as test:
+        test.write('file creation is working at least.')
+    
     data = countWords(wordsToMatch)
     plotData(data, wordsToMatch)
     
