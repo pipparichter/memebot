@@ -5,18 +5,12 @@ sys.path.append('../')
 import global_vars
 import bot_reply
 
-import os
 import requests
 import matplotlib.pyplot as plt 
 import re
 
-import boto3 
-s3 = boto3.client('s3')
-
 token = global_vars.token 
 groupID = global_vars.groupID
-
-bucketName = 'gm-memebot'
 
 
 def picToURL(pathString):
@@ -71,8 +65,6 @@ def plotData(data, wordsToMatch):
     plt.title('instances of the words ' + str(wordsToMatch))
     
     plt.savefig('../../tmp/graph.png')
-    
-    s3.upload_file('../../tmp/graph.png', bucketName, 'graph.png')
     
     return
 
