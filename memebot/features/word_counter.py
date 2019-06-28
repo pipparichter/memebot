@@ -71,9 +71,9 @@ def plotData(data, wordsToMatch):
     plt.ylabel('cumulative word instances')
     plt.title('instances of the words ' + str(wordsToMatch))
     
-    # os.makedir('./tmp')
+    os.makedir('../../tmp')
 
-    plt.savefig('../dictionaries/word_counter_graphs/graph.png')
+    plt.savefig('../../tmp/graph.png')
     
     return
 
@@ -91,13 +91,10 @@ def wordFrequency():
     else:
         return 'seriously, i said comma separated.'
 
-    with open('../dictionaries/word_counter_graphs/test.txt', 'w') as test:
-        test.write('file creation is working at least.')
-    
     data = countWords(wordsToMatch)
     plotData(data, wordsToMatch)
     
-    url = picToURL('../dictionaries/word_counter_graphs/graph.png')
+    url = picToURL('../../tmp/graph.png')
     if len(url) == 0:
         return 'no url'
     return url 
