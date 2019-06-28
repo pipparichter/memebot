@@ -31,16 +31,14 @@ def picToURL(pathString):
     return response.json()['payload']['picture_url'] + '.large'
 
 
-
-
-# Counts the number of times a word has been mentioned in the 1000 messages. 
+# Counts the number of times a word has been mentioned in the 100 messages. 
 def countWords(wordsToMatch):
     primaryCount = []
     cumulative = 0
     
-    requestParams = {'token':token,'limit':100}
+    requestParams = {'token':token,'limit':10}
     
-    while len(primaryCount) < 1000:    
+    while len(primaryCount) < 100:    
         secondaryCount = []
           
         # Remember, according to GroupMe's API, "If before_id is provided, then messages immediately preceding the 
@@ -66,61 +64,26 @@ def countWords(wordsToMatch):
                 
         
 # Takes a list as input and returns a graph plotting the values of the list with respect to their corresponding indices. 
-def plotData(data, wordsToMatch):
-    # formatted = [go.Scatter(x = [a for a in range(len(data))], y = data)]
-    # graph = plotly.offline.plot({'data':formatted, 'layout':go.Layout(title = 'use of words' + ' ' + str(wordsToMatch))})
-    
+def plotData(data, wordsToMatch):    
     plt.plot([a for a in range(len(data))], data)
     plt.xlabel('messages')
     plt.ylabel('cumulative word instances')
     plt.title('instances of the words ' + str(wordsToMatch))
     
-    try:
-        os.mkdir('../../tmp')
-    except os.FileExistsError:
-        pass 
-    
-    if os.path.exists('../../tmp'):
-        bot_reply.sendMessage('directory creation successful')
-    else:
-        bot_reply.sendMessage('directory creation unsuccessful')
-        return False
-
     plt.savefig('../../tmp/graph.png')
     
-    if os.path.exits('../../tmp/graph.png'):
-        bot_reply.sendMessage('save successful')
-    else:
-        bot_reply.sendMessage('save unsuccessful')
-        return False
-
     s3.upload_file('../../tmp/graph.png', bucketName, 'graph.png')
     
-    return True
+    return
 
 
 def wordFrequency():
-    bot_reply.sendMessage('sure thing, which words? (comma separated, please)')
-    words = bot_reply.readReply()
-
-    if ', ' in words:
-        wordsToMatch = words.split(', ')
-
-    elif ',' in words:
-        wordsToMatch = words.split(',')
-
-    else:
-        return 'seriously, i said comma separated.'
+    bot_reply.sendMessage('sure thing, which words?')
+    wordsToMatch = re.split('\W', bot_reply.readReply())
 
     data = countWords(wordsToMatch)
-    working = plotData(data, wordsToMatch)
+    plotData(data, wordsToMatch)
 
-    if working:
-        return 'ok'
-    else:
-        return 'not ok'  
+    url = picToURL('../../tmp/graph.png')
     
-    # url = picToURL('../../tmp/graph.png')
-    # if len(url) == 0:
-        # return 'no url'
-    # return url 
+    return url 
