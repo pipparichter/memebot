@@ -93,5 +93,5 @@ def wordFrequency():
     plotData(data, wordsToMatch)
     
     url = picToURL('..dictionaries/word_counter_graphs/graph.png')
-
+    bot_reply.sendMessage(url)
     return url 
