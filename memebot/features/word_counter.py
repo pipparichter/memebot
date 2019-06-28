@@ -82,9 +82,11 @@ def wordFrequency():
 
     if ', ' in words:
         wordsToMatch = words.split(', ')
+        bot_reply.sendMessage(str(wordsToMatch))
         
     elif ',' in words:
         wordsToMatch = words.split(',')
+        bot_reply.sendMessage(str(wordsToMatch))
 
     else:
         return 'seriously, i said comma separated.'
@@ -93,5 +95,6 @@ def wordFrequency():
     plotData(data, wordsToMatch)
     
     url = picToURL('..dictionaries/word_counter_graphs/graph.png')
-    bot_reply.sendMessage(url)
+    if len(url) == 0:
+        bot_reply.sendMessage('no url')
     return url 

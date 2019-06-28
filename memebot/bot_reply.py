@@ -108,5 +108,6 @@ def botReply(message):
         reply = staticTriggers[messageText]
 
     sendMessage(reply)
+    
     return
 
