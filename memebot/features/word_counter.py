@@ -8,11 +8,14 @@ import bot_reply
 import os
 import requests
 import matplotlib.pyplot as plt 
-import re
+
+import boto3 
+s3 = boto3.client('s3')
 
 token = global_vars.token 
 groupID = global_vars.groupID
 
+bucketName = 'gm-memebot'
 
 
 def picToURL(pathString):
@@ -74,6 +77,7 @@ def plotData(data, wordsToMatch):
     os.makedir('../../tmp')
 
     plt.savefig('../../tmp/graph.png')
+    s3.upload_file('../../tmp/graph.png', bucketName, 'graph.png')
     
     return
 
@@ -94,7 +98,9 @@ def wordFrequency():
     data = countWords(wordsToMatch)
     plotData(data, wordsToMatch)
     
-    url = picToURL('../../tmp/graph.png')
-    if len(url) == 0:
-        return 'no url'
-    return url 
+    return 'ok'
+
+    # url = picToURL('../../tmp/graph.png')
+    # if len(url) == 0:
+        # return 'no url'
+    # return url 
