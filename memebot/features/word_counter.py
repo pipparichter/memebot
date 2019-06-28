@@ -84,11 +84,9 @@ def wordFrequency():
 
     if ', ' in words:
         wordsToMatch = words.split(', ')
-        bot_reply.sendMessage(str(wordsToMatch))
-        
+
     elif ',' in words:
         wordsToMatch = words.split(',')
-        bot_reply.sendMessage(str(wordsToMatch))
 
     else:
         return 'seriously, i said comma separated.'
