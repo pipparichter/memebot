@@ -96,5 +96,5 @@ def wordFrequency():
     
     url = picToURL('..dictionaries/word_counter_graphs/graph.png')
     if len(url) == 0:
-        bot_reply.sendMessage('no url')
+        return 'no url'
     return url 
