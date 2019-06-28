@@ -75,12 +75,28 @@ def plotData(data, wordsToMatch):
     plt.ylabel('cumulative word instances')
     plt.title('instances of the words ' + str(wordsToMatch))
     
-    os.makedir('../../tmp')
+    try:
+        os.mkdir('../../tmp')
+    except: FileExistsError
+        pass 
+    
+    if os.path.exists('../../tmp'):
+        bot_reply.sendMessage('directory creation successful')
+    else:
+        bot_reply.sendMessage('directory creation unsuccessful')
+        return False
 
     plt.savefig('../../tmp/graph.png')
+    
+    if os.path.exits('../../tmp/graph.png'):
+        bot_reply.sendMessage('save successful')
+    else:
+        bot_reply.sendMessage('save unsuccessful')
+        return False
+
     s3.upload_file('../../tmp/graph.png', bucketName, 'graph.png')
     
-    return
+    return True
 
 
 def wordFrequency():
@@ -97,10 +113,13 @@ def wordFrequency():
         return 'seriously, i said comma separated.'
 
     data = countWords(wordsToMatch)
-    plotData(data, wordsToMatch)
-    
-    return 'ok'
+    working = plotData(data, wordsToMatch)
 
+    if working:
+        return 'ok'
+    else:
+        return 'not ok'  
+    
     # url = picToURL('../../tmp/graph.png')
     # if len(url) == 0:
         # return 'no url'
